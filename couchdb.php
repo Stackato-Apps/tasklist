@@ -1,8 +1,7 @@
 <html>
 <head>
-<title>PHP Test</title>
-<script src="js/jquery-1.10.2.min.js"></script>
-   
+<title>PHP Task List</title>
+	<script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link href="js/bootstrap.min.css" rel="stylesheet" media="screen">
     <script src="js/bootbox.min.js"></script>
