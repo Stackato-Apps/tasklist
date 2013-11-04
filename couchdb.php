@@ -17,7 +17,15 @@ require_once "./lib/couch.php";
 require_once "./lib/couchClient.php";
 require_once "./lib/couchDocument.php";
 
-$client = new couchClient($couch_dsn,$couch_db);
+try {
+
+	$client = new couchClient($couch_dsn,$couch_db);  // connect to database.
+
+} catch (Exception $e) {
+	echo "Error:".$e->getMessage()." (errcode=".$e->getCode().")\n";
+	exit(1);
+}
+
 
 if ( !$client->databaseExists() ) {  	// checks if database exists already.
     $client->createDatabase();			// if not, creates database.
@@ -46,7 +54,7 @@ try {
 
 // print out database task list.
 
-echo "Database has ".$tasks->total_rows." documents.<BR>\n";
+echo "Database ".$couch_db." has ".$tasks->total_rows." documents.<BR>\n";
 
 foreach ( $tasks->rows as $task ) {
 	echo $task->id." ";
@@ -57,5 +65,8 @@ foreach ( $tasks->rows as $task ) {
 }
 
 ?>
+
+ <input type="button" id="add" value="Add" onclick="" />
+
 </body>
 </html>
