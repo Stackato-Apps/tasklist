@@ -38,20 +38,24 @@ try {
 
 	$tasks = $client->getAllDocs(); // get all tasks (the tasklist)
 
-} catch (Exception $e) {
+} catch (Exception $e) {  // if fail to get all docs, print error msg.
 
-	echo "Error:".$e->getMessage()." (errcode=".$e->getCode().")\n";
+	echo "Error:".$e->getMessage()." (errcode=".$e->getCode().")\n";  
 	exit(1);
 }
 
 // print out database task list.
 
 echo "Database has ".$tasks->total_rows." documents.<BR>\n";
-foreach ( $tasks->rows as $row ) {
-    echo "Document ".$row->id."<BR>\n";
+
+foreach ( $tasks->rows as $task ) {
+	echo $task->id." ";
+
+	$desc = $client->getDoc($task->id);
+
+	echo $desc->task."<BR>\n";
 }
 
 ?>
-
 </body>
 </html>
