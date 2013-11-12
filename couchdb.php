@@ -5,9 +5,9 @@
     	<script src="js/bootstrap.min.js"></script>
     	<link href="js/bootstrap.min.css" rel="stylesheet" media="screen">    
 </head>
-
+<div class="container">
 <h1>Task List</h1>
-
+</div>
 <?php
 
 $couch_dsn = "http://localhost:5984/";  // database host:port
@@ -41,7 +41,21 @@ $dbs = $client->listDatabases();  // obtain database list (experimental)
 print_r($dbs); // display database
 */
 
+function delete_task($task) {
+	try {
+
+	$client->deleteDoc($task);
+
+} catch (Exception $e) {  // if fail to get all docs, print error msg.
+
+	echo "Error:".$e->getMessage()." (errcode=".$e->getCode().")<br/>\n";  
+	exit(1);
+}
+
+}
+
 $newtask = new couchDocument($client);
+
 
 if(isset($_POST['submit']))
 {	
@@ -50,7 +64,7 @@ if(isset($_POST['submit']))
 
 try {
 
-	$tasks = $client->getAllDocs(); // get all tasks (the tasklist)
+	$tasks = $client->getAllDocs(); // get all tasks (id's only)
 
 } catch (Exception $e) {  // if fail to get all docs, print error msg.
 
@@ -59,10 +73,12 @@ try {
 }
 
 // print out database task list.
+echo "<div class=\"container\">";
+echo "You have ".$tasks->total_rows." tasks.<br/>\n";
+echo "</div>";
 
-echo "Database ".$couch_db." has ".$tasks->total_rows." documents.<BR>\n";
-
-echo "<table>";
+echo "<div class=\"container\">";
+echo "<table class=\"table table-striped table-condensed table-hover\">";
 
 foreach ( $tasks->rows as $task ) {
 
@@ -70,16 +86,17 @@ foreach ( $tasks->rows as $task ) {
 	
 	echo "<tr>";
 
-	echo "<td>";
+	echo "<td style=\"width: 90%\">";
 	echo $desc->task;
 	echo "</td>";
 
-	echo "<td>";
-	echo "<input type=\"button\" name=\"edit\" value=\"Edit\">";
+	echo "<td style=\"width: 5%\">";
+	echo "<input type=\"button\" class=\"btn btn-primary\" name=\"edit\" value=\"Edit\">";
+	
 	echo "</td>";
 
-	echo "<td>";
-	echo "<input type=\"button\" name=\"delete\" value=\"Delete\">";
+	echo "<td style=\"width: 5%\">";
+	echo "<input type=\"button\" class=\"btn btn-danger\" name=\"delete\" value=\"Delete\">";
 	echo "</td>";
 
 	echo "</tr>";
@@ -87,16 +104,18 @@ foreach ( $tasks->rows as $task ) {
 
 
 echo "</table>";
-
+echo "</div>";
 ?>
-<form action="couchdb.php" method="post">
+<div class="container">
+
+<form role="form" action="couchdb.php" method="post">
 <br/>
-Enter Task: <input type="text" name="newtask"><br/>
+<h2><small>Enter Task: </small> </h2><input type="text" class="form-control" placeholder="New Task" name="newtask"><br/>
 <br/>
-<input type="submit" name="submit" value="Add Task"><br/>
-
-
-
+<input type="submit" name="submit" class="btn btn-success" value="Add Task"><br/>
 </form>
+
+</div>
+
 </body>
 </html>
