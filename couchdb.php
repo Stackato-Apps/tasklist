@@ -62,11 +62,31 @@ try {
 
 echo "Database ".$couch_db." has ".$tasks->total_rows." documents.<BR>\n";
 
+echo "<table>";
+
 foreach ( $tasks->rows as $task ) {
 
 	$desc = $client->getDoc($task->id);
-	echo $desc->task."<BR>\n";
+	
+	echo "<tr>";
+
+	echo "<td>";
+	echo $desc->task;
+	echo "</td>";
+
+	echo "<td>";
+	echo "<input type=\"button\" name=\"edit\" value=\"Edit\">";
+	echo "</td>";
+
+	echo "<td>";
+	echo "<input type=\"button\" name=\"delete\" value=\"Delete\">";
+	echo "</td>";
+
+	echo "</tr>";
 }
+
+
+echo "</table>";
 
 ?>
 <form action="couchdb.php" method="post">
