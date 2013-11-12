@@ -110,9 +110,11 @@ echo "</div>";
 
 <form role="form" action="couchdb.php" method="post">
 <br/>
-<h2><small>Enter Task: </small> </h2><input type="text" class="form-control" placeholder="New Task" name="newtask"><br/>
-<br/>
-<input type="submit" name="submit" class="btn btn-success" value="Add Task"><br/>
+<h2><small>Enter Task: </small> </h2>
+<div class="row">
+<input type="text" class="form-control" placeholder="New Task" name="newtask">
+</div><input type="submit" name="submit" class="btn btn-success pull-right" value="Add Task" style="margin:10px"></div>
+
 </form>
 
 </div>
