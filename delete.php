@@ -1,6 +1,6 @@
 <?php
 
-require_once "./connect.php";
+require_once "./connect-stackato.php";
 
 if(isset($_POST['hidden_id'])){
 	$task_id = $_POST['hidden_id'];

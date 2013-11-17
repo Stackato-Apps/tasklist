@@ -26,7 +26,7 @@
 
 <?php
 
-require_once "./connect.php";  // connect to CouchDB database
+require_once "./connect-stackato.php";  // connect to CouchDB database
 
 try {
 
