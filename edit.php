@@ -5,7 +5,7 @@ require_once "./connect-stackato.php";  // connect to CouchDB database
 
 // var_dump($_POST);
 
-if(isset($_POST['hidden_id']) && isset($_POST['edit'])){
+if(isset($_POST['hidden_id']) && ($_POST['edit']) != "Edit") {
 	$task_id = $_POST['hidden_id'];
 	$task = $client->getDoc($task_id);
 

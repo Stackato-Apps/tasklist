@@ -3,17 +3,19 @@
 <title>PHP Task List</title>
 	<script src="js/jquery-1.10.2.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>
+    	<script src="js/bootbox.min.js"></script>
     	<link href="js/bootstrap.min.css" rel="stylesheet" media="screen"> 
  	<script>
 		$(document).ready(function () {
 			$(".btn-primary").click(function () {
 				var edit_id = $(this).attr('id');
-				
 				var edit_task = prompt("Please edit the task:");
-				$(this).attr('value', edit_task); 
-			
+				if(edit_task == "" || edit_task == null){
+					
+				} else $(this).attr('value', edit_task); 	// edit task.
+
+				});		
 			});
-		});
     	</script>   
 </head>
 
@@ -60,6 +62,7 @@ foreach ( $tasks->rows as $task ) {
 	echo "<td style=\"width: 5%\">";
 	echo "<form action=\"edit.php\" method=\"post\" >";
 	echo "<input type=\"hidden\" name=\"hidden_id\" value=$task->id >";
+	echo "<input type=\"hidden\" class=\"hidden_text\" name=\"hidden_text\" value=\"".$desc->task."\" >";
 	echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"edit\" id=$task->id value=\"Edit\" >";
 	echo "</form>";
 	
