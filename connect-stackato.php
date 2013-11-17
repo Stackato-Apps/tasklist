@@ -1,15 +1,8 @@
 <?php
 
-    $services = getenv("VCAP_SERVICES");
-    $services_json = json_decode($services,true);
-    $couchdb_conf = $services_json["couchdb"][0]["credentials"];
-    echo "http://".$couchdb_conf["username"].":"
-      .$couchdb_conf["password"]."@".$couchdb_conf["host"].":"
-      .$couchdb_conf["port"];
-
-
-    ?><hr /><?php
-    echo $couchdb_conf["name"];
+$services = getenv("VCAP_SERVICES");
+$services_json = json_decode($services,true);
+$couchdb_conf = $services_json["couchdb"][0]["credentials"];
 
 
 $couch_dsn = "http://".$couchdb_conf["username"].":"
