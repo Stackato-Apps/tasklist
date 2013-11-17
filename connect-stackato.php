@@ -17,6 +17,8 @@ $couch_dsn = "http://".$couchdb_conf["username"].":"
       .$couchdb_conf["port"];  									// database host:port
 $couch_db = $couchdb_conf["name"];  	// "tasks"?			// database name
 
+$INDEX_PAGE = "index.php";
+
 require_once "./lib/couch.php";
 require_once "./lib/couchClient.php";
 require_once "./lib/couchDocument.php";

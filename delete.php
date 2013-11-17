@@ -8,6 +8,6 @@ if(isset($_POST['hidden_id'])){
 	$client->deleteDoc($task);
 }
 
-header('Location:couchdb.php');
+header('Location:'.$INDEX_PAGE);
 
 ?>

@@ -1,7 +1,8 @@
 <?php
 
-$couch_dsn = "http://localhost:5984/";  // database host:port
-$couch_db = "tasks";  			// database name
+
+$couch_dsn = "http://localhost:5984/";  									// database host:port
+$couch_db = "tasks";  	// "tasks"?			// database name
 
 require_once "./lib/couch.php";
 require_once "./lib/couchClient.php";

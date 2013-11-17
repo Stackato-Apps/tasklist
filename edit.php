@@ -12,7 +12,7 @@ if(isset($_POST['hidden_id']) && isset($_POST['edit'])){
 	$client->storeDoc($task);
 }
 
-header('Location:couchdb.php');
+header('Location:'.$INDEX_PAGE);
 
 ?>
 
