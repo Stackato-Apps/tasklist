@@ -3,18 +3,15 @@
 <title>PHP Task List</title>
 	<script src="js/jquery-1.10.2.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>
-    	<script src="js/bootbox.min.js"></script>
     	<link href="js/bootstrap.min.css" rel="stylesheet" media="screen"> 
  	<script>
 		$(document).ready(function () {
 			$(".btn-primary").click(function () {
 				var edit_id = $(this).attr('id');
 				
-				var edit_task = bootbox.prompt("Please edit the task:");
-				
-				if (edit_task != null){
-					$(this).attr('value', edit_task); 
-				}
+				var edit_task = prompt("Please edit the task:");
+				$(this).attr('value', edit_task); 
+			
 			});
 		});
     	</script>   

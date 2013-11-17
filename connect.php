@@ -3,6 +3,8 @@
 
 $couch_dsn = "http://localhost:5984/";  									// database host:port
 $couch_db = "tasks";  	// "tasks"?			// database name
+$INDEX_PAGE = "index.php";
+
 
 require_once "./lib/couch.php";
 require_once "./lib/couchClient.php";
