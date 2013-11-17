@@ -1,15 +1,13 @@
 <?php
 
-function delete_task($task) {
-	try {
+require_once "./connect.php";
 
-	    $client->deleteDoc($task->id);
-
-    } catch (Exception $e) {  // if fail to get all docs, print error msg.
-
-	    echo "Error:".$e->getMessage()." (errcode=".$e->getCode().")<br/>\n";  
-	    exit(1);
-    }
+if(isset($_POST['hidden_id'])){
+	$task_id = $_POST['hidden_id'];
+	$task = $client->getDoc($task_id);
+	$client->deleteDoc($task);
 }
+
+header('Location:couchdb.php');
 
 ?>

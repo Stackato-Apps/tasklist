@@ -1,17 +1,18 @@
 <?php
 
-function update_task($task, $edit) {
-	try {
-        
-        $doc = $client.getDoc($task->id);
-        $doc->task = $edit;
-        
-    } catch (Exception $e) {  // if fail to get all docs, print error msg.
+require_once "./connect.php";
 
-	    echo "Error:".$e->getMessage()." (errcode=".$e->getCode().")<br/>\n";  
-	    exit(1);
-    }
+if(isset($_POST['hidden_id']) && isset($_POST['edit'])){
+	$task_id = $_POST['hidden_id'];
+	$task = $client->getDoc($task_id);
+
+	$text = $_POST['edit'];
+	$task->task = $text;
+
+	$client->storeDoc($task);
 }
+
+header('Location:couchdb.php');
 
 ?>
 
