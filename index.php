@@ -3,7 +3,6 @@
 <title>PHP Task List</title>
 	<script src="js/jquery-1.10.2.min.js"></script>
     	<script src="js/bootstrap.min.js"></script>
-    	<script src="js/bootbox.min.js"></script>
     	<link href="js/bootstrap.min.css" rel="stylesheet" media="screen"> 
  	<script>
 		$(document).ready(function () {
