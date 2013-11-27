@@ -19,7 +19,7 @@ For localhost testing:
 
 	* 	$couch_dsn = "http://localhost:5984/";  // database host:port
 	* 	$couch_db = "tasks";  			// database name
-		The database will be created if it does not exist.
+							// The database will be created if it does not exist.
 
 For use in Stackato:  
 
