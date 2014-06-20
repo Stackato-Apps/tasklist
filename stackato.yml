@@ -1,4 +1,4 @@
-name: couchdb-tasks
+name: tasklist
 framework:
   type: php
 services:
