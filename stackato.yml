@@ -1,5 +1,0 @@
-name: tasklist
-framework:
-  type: php
-services:
-  ${name}-db: couchdb
